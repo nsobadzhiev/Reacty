@@ -1,0 +1,3 @@
+assets:
+  overrides:
+    /start: src/main/resources/assets/
