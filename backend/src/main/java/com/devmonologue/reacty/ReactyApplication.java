@@ -24,7 +24,7 @@ public class ReactyApplication extends Application<ReactyConfiguration> {
 
     @Override
     public void initialize(Bootstrap<ReactyConfiguration> bootstrap) {
-        bootstrap.addBundle(new ConfiguredAssetsBundle("/src/main/resources/assets/", "/start/", "index.html"));
+        bootstrap.addBundle(new ConfiguredAssetsBundle("/build/resources/main/", "/start/", "index.html"));
     }
 
     @Override
