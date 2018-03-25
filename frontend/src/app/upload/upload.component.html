@@ -1,0 +1,16 @@
+<!-- <div class="custom-file">
+  <input type="file"
+          multiple="false"
+                           accept='image/*'
+                           (change)="onFileUpload($event)"/>
+                           <span class="text-uppercase">Upload image</span>
+</div> -->
+
+
+<form ngNoForm enctype="multipart/form-data" method="POST" action="http://localhost:8080/upload">
+  <input type="text" name="name" value="" placeholder="Insert name here" class="field-input">
+  <input type="text" name="tags" value="" placeholder="Comma separated list of tags" class="field-input">
+  <input type="file" id="fileUpload" name="file"/>
+  <input type="hidden" id="fileName" name="fileName"/>
+  <button type="submit">Submit</button>
+</form>
