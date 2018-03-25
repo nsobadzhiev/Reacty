@@ -6,6 +6,16 @@
  * user guide available at https://docs.gradle.org/4.3.1/userguide/tutorial_java_projects.html
  */
 
+ buildscript {
+    repositories {
+
+    }
+
+    dependencies {
+
+    }
+}
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
@@ -60,6 +70,16 @@ run {
     args = ["server", "src/reacty.yml"]
 }
 
+processResources {
+    from(project(':frontend').file('dist')) {
+
+    }
+    from('../reactions_static') {
+      into 'images'
+    }
+}
+processResources.dependsOn(':frontend:build')
+
 // Define the main class for the application
 mainClassName = 'com.devmonologue.reacty.ReactyApplication'
-
+applicationDefaultJvmArgs = ['--add-modules', 'java.xml.bind']
