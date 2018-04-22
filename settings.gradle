@@ -8,7 +8,6 @@
  * in the user guide at https://docs.gradle.org/4.3.1/userguide/multi_project_builds.html
  */
 
-include 'backend'
-include 'frontend'
+include 'backend', 'frontend'
 
-rootProject.name = 'Reacty2'
+rootProject.name = 'Reacty'

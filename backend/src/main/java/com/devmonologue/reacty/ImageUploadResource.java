@@ -3,6 +3,7 @@ package com.devmonologue.reacty;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
+import javax.annotation.security.PermitAll;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -18,6 +19,7 @@ public class ImageUploadResource {
     private MemeStore reactionsStore = new MemeStore();
 
     @POST
+    @PermitAll
     public Response uploadImage(
             @FormDataParam("file") final InputStream fileInputStream,
             @FormDataParam("name") final String imageName,
@@ -25,7 +27,7 @@ public class ImageUploadResource {
         System.out.print("Uploading file...");
         String pwd = System.getProperty("user.dir");
         String name = UUID.randomUUID().toString();
-        String filePath = pwd + "/src/main/resources/assets/images/" + name;
+        String filePath = pwd + "/build/resources/main/images/" + name;
         File imageFile = new File(filePath);
         saveFile(fileInputStream, imageFile);
         saveDBRecord(imageName, imageTags, name);
