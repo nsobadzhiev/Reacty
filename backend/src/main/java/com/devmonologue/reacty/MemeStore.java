@@ -21,7 +21,6 @@ public class MemeStore {
 
     private MongoClient mongo = new MongoClient("localhost", 27017);
     private MongoDatabase db = mongo.getDatabase("MyDatabase");
-    //private MongoCollection<Reaction> reactions = db.getCollection("reactions");
 
 
     public MemeStore() {
