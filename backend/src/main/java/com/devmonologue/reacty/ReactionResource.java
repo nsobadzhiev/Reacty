@@ -20,7 +20,7 @@ import java.util.Optional;
 @Produces(MediaType.APPLICATION_JSON)
 public class ReactionResource {
 
-    private MemeStore reactionsStore = new MemeStore();
+    private MemeStore reactionsStore = new MongoMemeStore();
 
     public ReactionResource() {}
 

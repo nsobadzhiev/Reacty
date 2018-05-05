@@ -16,7 +16,7 @@ import java.util.UUID;
 @Consumes(MediaType.MULTIPART_FORM_DATA)
 public class ImageUploadResource {
 
-    private MemeStore reactionsStore = new MemeStore();
+    private MemeStore reactionsStore = new MongoMemeStore();
 
     @POST
     @PermitAll
