@@ -1,6 +1,6 @@
 <div *ngFor="let reaction of reactions">
-  <div>
-    <label>{{ reaction.name }}</label>
-    <img src="images/{{ reaction.image }}" alt="todo">
+  <div class="reactionContainer">
+    <h4 class="reactionName">{{ reaction.name }}</h4>
+    <img src="images/{{ reaction.image }}" alt="todo" class="reactionImage">
   </div>
 </div>

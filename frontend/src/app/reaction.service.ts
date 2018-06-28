@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import {} from '@angular/common/location';
 import { Observable } from 'rxjs/Rx';
 
 import { Reaction } from './reaction';
 
-let reactionsUrl = "http://localhost:8080/reactions";
+let reactionsUrl = "/reactions";
 
 @Injectable()
 export class ReactionService {
