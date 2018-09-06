@@ -25,32 +25,32 @@ public class ImageUploadResource {
     public Response uploadImage(
             @FormDataParam("file") final InputStream fileInputStream,
             @FormDataParam("name") final String imageName,
-            @FormDataParam("tags") final String imageTags) {
+            @FormDataParam("tags") final String imageTags,
+            @FormDataParam("link") final String link) {
         System.out.print("Uploading file...");
         String pwd = System.getProperty("user.dir");
         String name = UUID.randomUUID().toString();
         String filePath = pwd + "/build/resources/main/images/" + name;
         File imageFile = new File(filePath);
         saveFile(fileInputStream, imageFile);
-        saveDBRecord(imageName, imageTags, name);
+        saveDBRecord(imageName, imageTags, name, link);
 
         URI uri = UriBuilder.fromUri("/start").build();
         return Response.seeOther(uri).build();
     }
 
-    private void saveDBRecord(String imageName, String imageTags, String name) {
-        reactionsStore.saveReaction(imageName, imageTags, name);
+    private void saveDBRecord(String imageName, String imageTags, String name, String link) {
+        reactionsStore.saveReaction(imageName, imageTags, name, link);
     }
 
     private void saveFile(InputStream uploadedInputStream,
                           File serverLocation) {
         try {
             serverLocation.createNewFile();
-            OutputStream outputStream = new FileOutputStream(serverLocation);
             int read = 0;
             byte[] bytes = new byte[1024];
 
-            outputStream = new FileOutputStream(serverLocation);
+            OutputStream outputStream = new FileOutputStream(serverLocation);
             while ((read = uploadedInputStream.read(bytes)) != -1) {
                 outputStream.write(bytes, 0, read);
             }

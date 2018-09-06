@@ -34,7 +34,7 @@ public class MemeStore {
         FindIterable findIterable = collection.find(text);
         if (findIterable.first() != null) {
             Reaction foundReaction = new Reaction((org.bson.Document)findIterable.first());
-            System.out.print("Reaction: " + foundReaction.image);
+            System.out.print("Reaction: " + foundReaction.getImage());
             return foundReaction;
         }
         else {
@@ -54,13 +54,14 @@ public class MemeStore {
         return reactions;
     }
 
-    public void saveReaction(String name, String tags, String fileName) {
+    public void saveReaction(String name, String tags, String fileName, String link) {
         MongoDatabase db =  mongo.getDatabase("MyDatabase");
         MongoCollection collection = db.getCollection("reactions");
         Reaction newRecord = new Reaction();
-        newRecord.name = name;
-        newRecord.tags = tags;
-        newRecord.image = fileName;
+        newRecord.setName(name);
+        newRecord.setTags(tags);
+        newRecord.setImage(fileName);
+        newRecord.setLink(link);
         collection.insertOne(newRecord.toDocument());
     }
 

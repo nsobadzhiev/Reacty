@@ -41,16 +41,27 @@ public class Reaction {
         this.tags = tags;
     }
 
-    public String id = "";
-    public String name = "";
-    public String image = "";
-    public String tags = "";
+    @JsonProperty
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    private String id = "";
+    private String name = "";
+    private String image = "";
+    private String tags = "";
+    private String link = "";
 
     public Reaction(Document document) {
         this.id = document.getString("id");
         this.name = document.getString("name");
         this.tags = document.getString("tags");
         this.image = document.getString("image");
+        this.link = document.getString("link");
     }
 
     public Reaction() {}
@@ -61,6 +72,7 @@ public class Reaction {
         doc.append("name", this.name);
         doc.append("tags", this.tags);
         doc.append("image", this.image);
+        doc.append("link", this.link);
         return doc;
     }
 }
