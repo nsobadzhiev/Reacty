@@ -9,7 +9,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
 import java.io.*;
+import java.net.URI;
 import java.util.UUID;
 
 @Path("/upload")
@@ -31,9 +33,9 @@ public class ImageUploadResource {
         File imageFile = new File(filePath);
         saveFile(fileInputStream, imageFile);
         saveDBRecord(imageName, imageTags, name);
-        String output = "File can be downloaded from the following location : " + filePath;
 
-        return Response.status(200).entity(output).build();
+        URI uri = UriBuilder.fromUri("/start").build();
+        return Response.seeOther(uri).build();
     }
 
     private void saveDBRecord(String imageName, String imageTags, String name) {
