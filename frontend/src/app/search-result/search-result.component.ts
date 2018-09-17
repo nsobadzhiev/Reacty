@@ -29,4 +29,13 @@ export class SearchResultComponent implements OnInit {
   ngOnInit() {
   }
 
+  public pathForReaction(reaction:Reaction): String {
+    if (reaction.image != null) {
+      return "images/" + reaction.image
+    }
+    else {
+      return reaction.link
+    }
+  }
+
 }

@@ -24,15 +24,19 @@ public class ImageUploadResource {
     @PermitAll
     public Response uploadImage(
             @FormDataParam("file") final InputStream fileInputStream,
+            @FormDataParam("file") FormDataContentDisposition fileDetail,
             @FormDataParam("name") final String imageName,
             @FormDataParam("tags") final String imageTags,
             @FormDataParam("link") final String link) {
         System.out.print("Uploading file...");
         String pwd = System.getProperty("user.dir");
-        String name = UUID.randomUUID().toString();
-        String filePath = pwd + "/build/resources/main/images/" + name;
-        File imageFile = new File(filePath);
-        saveFile(fileInputStream, imageFile);
+        String name = null;
+        if (fileDetail.getSize() != 0) {
+            name = UUID.randomUUID().toString();
+            String filePath = pwd + "/build/resources/main/images/" + name;
+            File imageFile = new File(filePath);
+            saveFile(fileInputStream, imageFile);
+        }
         saveDBRecord(imageName, imageTags, name, link);
 
         URI uri = UriBuilder.fromUri("/start").build();

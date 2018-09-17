@@ -26,7 +26,7 @@ export class ReactionService {
     var reactions = new Array<Reaction>();
     for (let key in rawReactions) {
       let rawReaction = rawReactions[key];
-      let reaction = new Reaction(rawReaction.id, rawReaction["name"], rawReaction["image"], rawReaction["tags"]);
+      let reaction = new Reaction(rawReaction.id, rawReaction["name"], rawReaction["image"], rawReaction["tags"], rawReaction["link"]);
       reactions.push(reaction);
     }
     return reactions;

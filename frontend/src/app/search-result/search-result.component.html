@@ -1,6 +1,7 @@
 <div *ngFor="let reaction of reactions">
   <div class="reactionContainer">
     <h4 class="reactionName">{{ reaction.name }}</h4>
-    <img src="images/{{ reaction.image }}" alt="todo" class="reactionImage">
+    <img src="{{ pathForReaction(reaction) }}" alt="todo" class="reactionImage">
+    <a href="{{ reaction.link }}">Open</a>
   </div>
 </div>
